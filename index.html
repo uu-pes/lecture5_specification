@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="reveal.js/dist/theme/black.css">
 
 		<!-- Tabler icons -->
-		<link rel="stylesheet" href="tabler-icons/iconfont/tabler-icons.min.css">
+		<link rel="stylesheet" href="tabler-icons/packages/icons-webfont/tabler-icons.min.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="atomic-one-dark.css">
@@ -27,16 +27,126 @@
 			<div class="slides">
 <!-- BEGIN SLIDES -->
 <section data-background-image="images/background.jpg" data-background-opacity="0.4">
-	<h1>Lecture 3</h1>
+	<h1>Lecture 4</h1>
 	<p>Nikolaus Huber</p>
+</section>
+
+<section data-background-image="images/specification.jpg" data-background-opacity="0.3">
+	<h1>Specification</h1>
+</section>
+
+<section data-background-color="white">
+	<h3>Systems development lifecycle</h3>
+	<img class="r-stretch" src="images/v_diagram.svg">
 </section>
 
 <section>
 	<h3>Outline</h3>
+	<ul>
+		<li>Informal (system-level) specification</li>
+		<li>Requirements engineering</li>
+		<li>Formal specification</li>
+	</ul>
+</section>
 
-	<ul class="box-list">
-		<li><i class="ti ti-alarm"></i>RTOS Basics</li>
-		<li><i class="ti ti-trowel"></i>Zephyr</li>
+<section>
+	<h3>Requirements engineering</h3>
+	
+	<ul>
+		<li>Often collected during discussions/negotiations between stakeholders 
+		<ul>
+			<li>Customer</li>
+			<li>System designer</li>
+			<li>Software provider</li>
+			<li>...</li>
+		</ul>
+	</ul>
+
+	<div style="margin-top: 1rem" class="citation">
+		<div class="cite">It is widely acknowledged amongst researchers and industry practitioners that software projects 
+			are critically vulnerable when the requirements- related activities are poorly performed.
+		</div>
+		<div class="source">
+			P. Bourque and R.E. Fairley, SWEBOK Version 3.0, IEEE Computer Society
+		</div>
+	</div>
+</section>
+
+<section>
+	<h3>Types of requirements (FURPS+) </h3>
+
+		<div class="half-part">
+		<ul>
+			<li>Functionality</li>
+			<ul>
+				<li>Features, capabilities, security</li>
+			</ul>
+			<li>Usability</li>
+			<ul>
+				<li>Human-Computer Interaction</li>
+				<li>Documentation</li>
+			</ul>
+			<li>Reliability</li>
+			<ul>
+				<li>Frequency of failure</li>
+				<li>Error recovery</li>
+			</ul>
+		</ul>
+	</div>
+	<div class="half-part">
+		<ul>
+			<li>Performance</li>
+			<ul>
+				<li>Response time</li>
+			</ul>
+			<li>Supportability</li>
+			<ul>
+				<li>Adaptability, Configurability</li>
+				<li>Maintenance</li>
+			</ul>
+			<li>Many others</li>
+			<ul>
+				<li>Implementation</li>
+				<li>User interface</li>
+				<li>Licencing</li>
+			</ul>
+		</ul>
+	</div>
+</section>
+
+<section>
+	<h3>Standards (examples)</h3>
+	<ul>
+		<li>ISO/IEC/IEEE 12207:2017(E) - International Standard - Systems and software engineering -- Software life cycle processes</li>
+		<ul>
+			<li>6.4.2: Stakeholder Needs and Requirements Definition process</li>
+			<li>6.4.3: System/Software requirements definition process</li>
+		</ul>
+		<li>ECSS-E-ST-40C - Software (2009)</li>
+		<ul>
+			<li>4.2.4: Software requirements and architecture engineering process</li>
+		</ul>
+	</ul>
+</section>
+
+<section>
+	<h3>Example ATM</h3>
+	<ul>
+		<li>Functionality</li>
+		<ul>
+			<li>An ATM shall dispense money to people presenting a valid debit card and entering the correct PIN</li>
+		</ul>
+		<li>Usability</li>
+		<ul>
+			<li>ATM shall be usable for visually impaired people</li>
+			<li>ATM shall be usable for colour blind people</li>
+		</ul>
+		<li>Reliability</li>
+		<ul>
+			<li>There shall be at most one failure per calender year</li>
+			<li>ATM shall be operational at least 99.99% of the time</li>
+			<li>After a restart, the ATM shall check the current balance against the main bank system</li>
+		</ul>
 	</ul>
 </section>
 
