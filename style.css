@@ -172,6 +172,10 @@ ul > ul > li {
 }
 
 /* table, th, td {
-    text-align: center; 
     border: 1px solid white; 
-} */
+    border-collapse: collapse; 
+}  */
+
+.katex {
+    font-size: 2rem !important; 
+}
