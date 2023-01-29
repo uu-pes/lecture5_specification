@@ -53,16 +53,16 @@
 	<h3>Requirements engineering</h3>
 	
 	<ul>
-		<li>Often collected during discussions/negotiations between stakeholders 
+		<li class="fragment fade-up">Often collected during discussions/negotiations between stakeholders 
 		<ul>
-			<li>Customer</li>
-			<li>System designer</li>
-			<li>Software provider</li>
-			<li>...</li>
+			<li class="fragment fade-up">Customer</li>
+			<li class="fragment fade-up">System designer</li>
+			<li class="fragment fade-up">Software provider</li>
+			<li class="fragment fade-up">...</li>
 		</ul>
 	</ul>
 
-	<div style="margin-top: 1rem" class="citation">
+	<div style="margin-top: 1rem" class="fragment fade-up citation">
 		<div class="cite">It is widely acknowledged amongst researchers and industry practitioners that software projects 
 			are critically vulnerable when the requirements- related activities are poorly performed.
 		</div>
@@ -77,38 +77,38 @@
 
 		<div class="half-part">
 		<ul>
-			<li>Functionality</li>
+			<li class="fragment fade-up">Functionality</li>
 			<ul>
-				<li>Features, capabilities, security</li>
+				<li class="fragment fade-up">Features, capabilities, security</li>
 			</ul>
-			<li>Usability</li>
+			<li class="fragment fade-up">Usability</li>
 			<ul>
-				<li>Human-Computer Interaction</li>
-				<li>Documentation</li>
+				<li class="fragment fade-up">Human-Computer Interaction</li>
+				<li class="fragment fade-up">Documentation</li>
 			</ul>
-			<li>Reliability</li>
+			<li class="fragment fade-up">Reliability</li>
 			<ul>
-				<li>Frequency of failure</li>
-				<li>Error recovery</li>
+				<li class="fragment fade-up">Frequency of failure</li>
+				<li class="fragment fade-up">Error recovery</li>
 			</ul>
 		</ul>
 	</div>
 	<div class="half-part">
 		<ul>
-			<li>Performance</li>
+			<li class="fragment fade-up">Performance</li>
 			<ul>
-				<li>Response time</li>
+				<li class="fragment fade-up">Response time</li>
 			</ul>
-			<li>Supportability</li>
+			<li class="fragment fade-up">Supportability</li>
 			<ul>
-				<li>Adaptability, Configurability</li>
-				<li>Maintenance</li>
+				<li class="fragment fade-up">Adaptability, Configurability</li>
+				<li class="fragment fade-up">Maintenance</li>
 			</ul>
-			<li>Many others</li>
+			<li class="fragment fade-up">Many others</li>
 			<ul>
-				<li>Implementation</li>
-				<li>User interface</li>
-				<li>Licencing</li>
+				<li class="fragment fade-up">Implementation</li>
+				<li class="fragment fade-up">User interface</li>
+				<li class="fragment fade-up">Licencing</li>
 			</ul>
 		</ul>
 	</div>
@@ -117,14 +117,14 @@
 <section>
 	<h3>Standards (examples)</h3>
 	<ul>
-		<li>ISO/IEC/IEEE 12207:2017(E) - International Standard - Systems and software engineering -- Software life cycle processes</li>
+		<li class="fragment fade-up">ISO/IEC/IEEE 12207:2017(E) - International Standard - Systems and software engineering -- Software life cycle processes</li>
 		<ul>
-			<li>6.4.2: Stakeholder Needs and Requirements Definition process</li>
-			<li>6.4.3: System/Software requirements definition process</li>
+			<li class="fragment fade-up">6.4.2: Stakeholder Needs and Requirements Definition process</li>
+			<li class="fragment fade-up">6.4.3: System/Software requirements definition process</li>
 		</ul>
-		<li>ECSS-E-ST-40C - Software (2009)</li>
+		<li class="fragment fade-up">ECSS-E-ST-40C - Software (2009)</li>
 		<ul>
-			<li>4.2.4: Software requirements and architecture engineering process</li>
+			<li class="fragment fade-up">4.2.4: Software requirements and architecture engineering process</li>
 		</ul>
 	</ul>
 </section>
@@ -153,17 +153,17 @@
 <section>
 	<h3>Detailed design phase</h3>
 	<ul>
-		<li>Individual components of the system are specified/designed</li>
+		<li class="fragment fade-up">Individual components of the system are specified/designed</li>
 		<ul>
-			<li>Expected behaviour of functions/methods</li>
-			<li>Assumptions about environment</li>
-			<li>Invariants of individual components</li>
+			<li class="fragment fade-up">Expected behaviour of functions/methods</li>
+			<li class="fragment fade-up">Assumptions about environment</li>
+			<li class="fragment fade-up">Invariants of individual components</li>
 		</ul>
-		<li>Different formalisms possible</li>
+		<li class="fragment fade-up">Different formalisms possible</li>
 		<ul>
-			<li>Contracts</li>
-			<li>Assume/Assert statements</li>
-			<li>...</li>
+			<li class="fragment fade-up">Contracts</li>
+			<li class="fragment fade-up">Assume/Assert statements</li>
+			<li class="fragment fade-up">...</li>
 		</ul>				
 	</ul>
 </section>
@@ -171,23 +171,23 @@
 <section>
 	<h3>(Function) Contracts</h3>
 	<ul>
-		<li>Central concept of detailed specification</li>
-		<li>Describe <emph>intended behaviour</emph> as a function between</li>
+		<li class="fragment fade-up">Central concept of detailed specification</li>
+		<li class="fragment fade-up">Describe <emph>intended behaviour</emph> as a function between</li>
 		<ul>
-			<li>The <emph>caller</emph> (user of functionality)</li>
-			<li>The <emph>callee</emph> (provider of functionality)</li>
+			<li class="fragment fade-up">The <emph>caller</emph> (user of functionality)</li>
+			<li class="fragment fade-up">The <emph>callee</emph> (provider of functionality)</li>
 		</ul>
-		<li>Consists of a pair of</li>
+		<li class="fragment fade-up">Consists of a pair of</li>
 		<ul>
-			<li>A set of <emph>preconditions</emph> (assumptions made by callee)</li>
-			<li>A set of <emph>postconditions</emph> (guarantees given by callee)</li>
+			<li class="fragment fade-up">A set of <emph>preconditions</emph> (assumptions made by callee)</li>
+			<li class="fragment fade-up">A set of <emph>postconditions</emph> (guarantees given by callee)</li>
 		</ul>
 	</ul>
 </section>
 
 <section>
 	<h3>Example - ATM</h3>
-	<pre class="C"><code data-trim data-noescape data-line-numbers="|1|2|3,4,5|6,7">
+	<pre class="C"><code data-trim data-noescape data-line-numbers="|2|3|4,5,6|7,8">
 		/**
 		 * PRE: Card is inserted, user not authenticated
 		 * POST: If pin is correct, then user is authenticated
@@ -244,13 +244,13 @@
 <section>
 	<h3>Specification so far</h3>
 	<ul>
-		<li>Description still fairly high-level</li>
-		<li>Relies on natual language</li>
+		<li class="fragment fade-up">Description still fairly high-level</li>
+		<li class="fragment fade-up">Relies on natual language</li>
 		<ul>
-			<li>Ambiguous</li>
-			<li>Cannot be validated automatically</li>
+			<li class="fragment fade-up">Ambiguous</li>
+			<li class="fragment fade-up">Cannot be validated automatically</li>
 		</ul>
-		<li>Need for more specialized specification language</li>
+		<li class="fragment fade-up">Need for more specialized specification language</li>
 	</ul>
 </section>
 
@@ -261,16 +261,16 @@
 <section>
 	<h3>Formal specification</h3>
 	<ul>
-		<li>Need a language to capture</li>
+		<li class="fragment fade-up">Need a language to capture</li>
 		<ul>
-			<li>Preconditions</li>
-			<li>Postconditions</li>
-			<li>Invariants, assumptions, etc.</li>
+			<li class="fragment fade-up">Preconditions</li>
+			<li class="fragment fade-up">Postconditions</li>
+			<li class="fragment fade-up">Invariants, assumptions, etc.</li>
 		</ul>
-		<li>Eventually we would also like to</li>
+		<li class="fragment fade-up">Eventually we would also like to</li>
 		<ul>
-			<li>use <emph>automation</emph> in testing</li>
-			<li>perform <emph>formal verification</emph></li>
+			<li class="fragment fade-up">use <emph>automation</emph> in testing</li>
+			<li class="fragment fade-up">perform <emph>formal verification</emph></li>
 		</ul>
 	</ul>
 </section>
@@ -344,16 +344,16 @@
 <section>
 	<h3>Checking propositional formulas</h3>
 	<ul>
-		<li>By hand</li>
+		<li class="fragment fade-up">By hand</li>
 		<ul>
-			<li>Truth table</li>
-			<li>Formula simplifications</li>
+			<li class="fragment fade-up">Truth table</li>
+			<li class="fragment fade-up">Formula simplifications</li>
 		</ul>
-		<li>By using dedicated software tools</li>
+		<li class="fragment fade-up">By using dedicated software tools</li>
 		<ul>
-			<li>SAT solvers</li>
-			<li>Usually also provide a <emph>model</emph> for satisfiable formulas</li>
-			<li>SAT is <emph>NP complete</emph>, but often solveable in practice</li>
+			<li class="fragment fade-up">SAT solvers</li>
+			<li class="fragment fade-up">Usually also provide a <emph>model</emph> for satisfiable formulas</li>
+			<li class="fragment fade-up">SAT is <emph>NP complete</emph>, but often solveable in practice</li>
 		</ul>
 	</ul>
 </section>
@@ -361,15 +361,15 @@
 <section>
 	<h3>Propositional logic in verification</h3>
 	<ul>
-		<li>Propositional logic is relatively weak</li>
+		<li class="fragment fade-up">Propositional logic is relatively weak</li>
 		<ul>
-			<li>Cannot express many of the "interesting" properties</li>
-			<li>Widely applied for specifying hardware</li>
+			<li class="fragment fade-up">Cannot express many of the "interesting" properties</li>
+			<li class="fragment fade-up">Widely applied for specifying hardware</li>
 		</ul>
-		<li>Sometimes used for abstractions of programs</li>
+		<li class="fragment fade-up">Sometimes used for abstractions of programs</li>
 		<ul>
-			<li>Abstracting a boolean program with same control flow</li>
-			<li>E.g. SLAM toolkit</li>
+			<li class="fragment fade-up">Abstracting a boolean program with same control flow</li>
+			<li class="fragment fade-up">E.g. SLAM toolkit</li>
 		</ul>
 	</ul>
 </section>
@@ -433,9 +433,9 @@
 <section>
 	<h3>Program states</h3>
 	<ul>
-		<li>Pre-, Postconditions, and invariants => distinguishing program states</li>
-		<li>Need language/logic that supports native datatypes (int, real, etc.)</li>
-		<li>Program variables then become formula variables!</li>
+		<li class="fragment fade-up">Pre-, Postconditions, and invariants => distinguishing program states</li>
+		<li class="fragment fade-up">Need language/logic that supports native datatypes (int, real, etc.)</li>
+		<li class="fragment fade-up">Program variables then become formula variables!</li>
 	</ul>
 </section>
 
@@ -512,9 +512,9 @@
 <section>
 	<h3>Assertions</h3>
 	<ul>
-		<li>Alternative to contracts</li>
-		<li><emph>assert</emph> statement present in many languages</li>
-		<li>Commonly used by programmers to state invariants or intentions</li>
+		<li class="fragment fade-up">Alternative to contracts</li>
+		<li class="fragment fade-up"><emph>assert</emph> statement present in many languages</li>
+		<li class="fragment fade-up">Commonly used by programmers to state invariants or intentions</li>
 	</ul>
 </section>
 
@@ -540,7 +540,7 @@
 
 <section>
 	<h3>Example - Stack</h3>
-	<pre class="C"><code data-trim data-noescape data-line-numbers="|11|12|17,18|">
+	<pre class="C"><code data-trim data-noescape data-line-numbers="|11|12|17|">
 		#define STACK_SIZE 10 
 
 		int stackData[STACK_SIZE]; 
@@ -587,21 +587,21 @@
 <section>
 	<h3>Assumptions</h3>
 	<ul>
-		<li>If a formula P evaluates to true, then assume(P) has no effect</li>
-		<li>If a formula P evalutes to false, then assume(P) suspends execution</li>
-		<li>After assume(false), it's like the program was never started</li>
-		<li>assume is not an executable statement</li>
+		<li class="fragment fade-up">If a formula P evaluates to true, then assume(P) has no effect</li>
+		<li class="fragment fade-up">If a formula P evalutes to false, then assume(P) suspends execution</li>
+		<li class="fragment fade-up">After assume(false), it's like the program was never started</li>
+		<li class="fragment fade-up">assume is not an executable statement</li>
 	</ul>
 </section>
 
 <section>
 	<h3>What about system-level specification?</h3>
 	<ul>
-		<li>For detailed design: Contracts, assertions, assumptions</li>
-		<li>For system-level specification</li>
+		<li class="fragment fade-up">For detailed design: Contracts, assertions, assumptions</li>
+		<li class="fragment fade-up">For system-level specification</li>
 		<ul>
-			<li>Formal <emph>temporal</emph> properties: (LTL, CTL, Timed Automata, ...)</li>
-			<li>Observers and runtime monitors</li>
+			<li class="fragment fade-up">Formal <emph>temporal</emph> properties: (LTL, CTL, Timed Automata, ...)</li>
+			<li class="fragment fade-up">Observers and runtime monitors</li>
 		</ul>
 	</ul>
 </section>
@@ -609,12 +609,12 @@
 <section>
 	<h3>Observers</h3>
 	<ul>
-		<li>Watchdogs check that system is reactive</li>
-		<li>Observers generalise this concept</li>
+		<li class="fragment fade-up">Watchdogs check that system is reactive</li>
+		<li class="fragment fade-up">Observers generalise this concept</li>
 		<ul>
-			<li>Environment assumptions: Received inputs are meaningful (PRE)</li>
-			<li>No errors: System operates within legal ranges (POST)</li>
-			<li>System invariants are not violated</li>
+			<li class="fragment fade-up">Environment assumptions: Received inputs are meaningful (PRE)</li>
+			<li class="fragment fade-up">No errors: System operates within legal ranges (POST)</li>
+			<li class="fragment fade-up">System invariants are not violated</li>
 		</ul>
 	</ul>
 </section>
