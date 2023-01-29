@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Lecture 3</title>
+		<title>Lecture 4</title>
 
 		<link rel="shortcut icon" type="image/x-icon" href="uu_logo/UU_logo_color-cropped.ico">
 
@@ -313,7 +313,7 @@
 </section>
 
 <section>
-	<h3>Propoerties of formulas</h3>
+	<h3>Properties of formulas</h3>
 	<div>A formula containing variables P, Q, ... can be</div>
 	<ul>
 		<li>Satisfiable</li>
@@ -413,6 +413,225 @@
 			<li>$\forall x, y: \mathbb{Z}.\, (x \geq y \rightarrow f(x) \geq f(y)) \rightarrow f(2) \geq f(1)$</li>
 			<li>$\forall x: S.\, p(x) \rightarrow \exists y: S.\, p(y)$</li>
 		</ul>
+	</ul>
+</section>
+
+<section>
+	<h3>FOL Properties</h3>
+	<ul>
+		<li>Same as before</li>
+		<ul>
+			<li>Satisfiable</li>
+			<li>Valid</li>
+			<li>Unsatisfiable</li>
+			<li>Invalid</li>
+		</ul>
+		<li>Can be solved with SMT solver</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Program states</h3>
+	<ul>
+		<li>Pre-, Postconditions, and invariants => distinguishing program states</li>
+		<li>Need language/logic that supports native datatypes (int, real, etc.)</li>
+		<li>Program variables then become formula variables!</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Example</h3>
+	<pre class="C"><code data-trim data-noescape data-line-numbers="">
+		/** 
+		 * result >= a /\ result >= b /\ (result = a \/ result = b) 
+		 */ 
+		int max(int a, int b)
+		{
+			if (a > b) return a; 
+			else return b; 
+		}
+	</code></pre>
+</section>
+
+<section>
+	<h3>Concrete contract languages</h3>
+
+	<ul>
+		<li>Builtin support: Ada 2012, Eiffel, Scala, Dafny, Kotlin, ...</li>
+		<li>Support through additional tools:</li>
+		<ul>
+			<li>OCaml: GOSPEL</li>
+			<li>Java: Java Modeling Language (JML)</li>
+			<li>C: ANSI C Specification Language (ACSL)</li>
+		</ul>
+	</ul>
+</section>
+
+<section>
+	<h3>Example</h3>
+	<pre class="C"><code data-trim data-noescape data-line-numbers="">
+		/*@
+			ensures 
+				\result >= a && 
+				\result >= b && 
+				(\result == a || \result == b);  
+		*/ 
+		int max(int a, int b)
+		{
+			if (a > b) return a; 
+			else return b; 
+		}
+	</code></pre>
+</section>
+
+<section>
+	<h3>Example - Stack</h3>
+	<pre class="C"><code data-trim data-noescape data-line-numbers="|7|8,9,10|">
+		#define STACK_SIZE 10 
+
+		int stackData[STACK_SIZE]; 
+		int topPointer = 0; 
+
+		/*@
+		 	requires topPointer < STACK_SIZE; 
+			ensures 
+				topPointer == \old(topPointer) + 1 && 
+				stackData[\old(topPointer)] == data; 
+		*/ 
+		void push(int data) {
+			stackData[topPointer] = data; 
+			topPointer++; 
+		}
+	</code></pre>
+</section>
+
+<section>
+	<h1>Assertions and assumptions</h1>
+</section>
+
+<section>
+	<h3>Assertions</h3>
+	<ul>
+		<li>Alternative to contracts</li>
+		<li><emph>assert</emph> statement present in many languages</li>
+		<li>Commonly used by programmers to state invariants or intentions</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Example - Stack</h3>
+	<pre class="C"><code data-trim data-noescape data-line-numbers="">
+		#define STACK_SIZE 10 
+
+		int stackData[STACK_SIZE]; 
+		int topPointer = 0; 
+
+		/** 
+		 * PRE: stack is not empty; 
+		 * POST: topmost element is removed and returned 
+		 */ 
+		int pop() {
+			int res = stackData[topPointer]; 
+			topPointer--; 
+			return res; 
+		}
+	</code></pre>
+</section>
+
+<section>
+	<h3>Example - Stack</h3>
+	<pre class="C"><code data-trim data-noescape data-line-numbers="|11|12|17,18|">
+		#define STACK_SIZE 10 
+
+		int stackData[STACK_SIZE]; 
+		int topPointer = 0; 
+
+		/** 
+		 * PRE: stack is not empty; 
+		 * POST: topmost element is removed and returned 
+		 */ 
+		int pop() {
+			assert(topPointer > 0); 
+			int oldTopPointer = topPointer; 
+
+			int res = stackData[topPointer]; 
+			topPointer--; 
+
+			assert(topPointer == oldTopPointer - 1); 
+			assert(res == stackData[oldTopPointer]); 
+			return res; 
+		}
+	</code></pre>
+</section>
+
+<section>
+	<h3>Semantics of assert</h3>
+	<ul>
+		<li>If a formula P evaluates to <emph>true</emph>, then assert(P) has no effect</li>
+		<li>If a formula P evaluates to <emph>false</emph>, then assert(P) raises an error</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Assertions vs contracts</h3>
+	<ul>
+		<li class="fragment fade-up">Problem 1: assert mixes specification and implementation</li>
+		<li class="fragment fade-up">Problem 2: concepts like pre-state (\old) are cumbersome</li>
+		<li class="fragment fade-up">Problem 3: assert mixes up responsibilities</li>
+		<ul>
+			<li class="fragment fade-up">PRE => responsibility of <emph>caller</emph></li>
+			<li class="fragment fade-up">POST => responsibility of <emph>callee</emph></li>
+		</ul>
+	</ul>
+</section>
+
+<section>
+	<h3>Assumptions</h3>
+	<ul>
+		<li>If a formula P evaluates to true, then assume(P) has no effect</li>
+		<li>If a formula P evalutes to false, then assume(P) suspends execution</li>
+		<li>After assume(false), it's like the program was never started</li>
+		<li>assume is not an executable statement</li>
+	</ul>
+</section>
+
+<section>
+	<h3>What about system-level specification?</h3>
+	<ul>
+		<li>For detailed design: Contracts, assertions, assumptions</li>
+		<li>For system-level specification</li>
+		<ul>
+			<li>Formal <emph>temporal</emph> properties: (LTL, CTL, Timed Automata, ...)</li>
+			<li>Observers and runtime monitors</li>
+		</ul>
+	</ul>
+</section>
+
+<section>
+	<h3>Oberservers</h3>
+	<ul>
+		<li>Watchdogs check that system is reactive</li>
+		<li>Observers generalise this concept</li>
+		<ul>
+			<li>Environment assumptions: Received inputs are meaningful (PRE)</li>
+			<li>No errors: System operates within legal ranges (POST)</li>
+			<li>System invariants are not violated</li>
+		</ul>
+	</ul>
+</section>
+
+<section>
+	<h3>Observers</h3>
+	<img class="r-stretch" src="images/observer.drawio.svg">
+</section>
+
+<section>
+	<h3>Observers</h3>
+	<ul>
+		<li class="fragment fade-up">Usually implemented in software</li>
+		<li class="fragment fade-up">Observers can monitor all system inputs and outputs</li>
+		<li class="fragment fade-up">Perform <emph>sanity checks</emph> (derived from system specification)</li>
+		<li class="fragment fade-up">Ongoing research about automated generation of observers</li>
 	</ul>
 </section>
 
