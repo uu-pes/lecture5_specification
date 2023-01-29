@@ -191,7 +191,7 @@
 		/**
 		 * PRE: Card is inserted, user not authenticated
 		 * POST: If pin is correct, then user is authenticated
-		 * POST: If pin is incorrect, and counter < 0, then 
+		 * POST: If pin is incorrect, and counter < 2, then 
 		 		 counter is incremented by 1, and user is not 
 				 authenticated 
 		 * POST: If pin is incorrect, and counter >= 2, then card is 
@@ -336,8 +336,8 @@
 		<li>$\neg(\Phi \lor \Psi) \leftrightarrow \neg \Phi \land \neg \Psi$</li>
 		<li>$(true \land \Phi) \leftrightarrow \Phi$</li>
 		<li>$(false \lor \Phi) \leftrightarrow \Phi$</li>
-		<li>$\Phi \leftrightarrow true$</li>
-		<li>$false \leftrightarrow \Phi$</li>
+		<li>$\Phi \rightarrow true$</li>
+		<li>$false \rightarrow \Phi$</li>
 	</ul>
 </section>
 
@@ -557,7 +557,6 @@
 			int res = stackData[topPointer]; 
 			topPointer--; 
 
-			assert(topPointer == oldTopPointer - 1); 
 			assert(res == stackData[oldTopPointer]); 
 			return res; 
 		}
@@ -608,7 +607,7 @@
 </section>
 
 <section>
-	<h3>Oberservers</h3>
+	<h3>Observers</h3>
 	<ul>
 		<li>Watchdogs check that system is reactive</li>
 		<li>Observers generalise this concept</li>
