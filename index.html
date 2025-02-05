@@ -376,8 +376,8 @@
 	<ul>
 		<li>$P \rightarrow Q$</li>
 		<li>$(P \lor Q) \land \neg P \land \neg Q$</li>
-		<li>$(P \implies Q) \leftrightarrow (Q \implies P)$</li>
-		<li>$Q \implies P$</li>
+		<li>$(P \rightarrow Q) \leftrightarrow (Q \rightarrow P)$</li>
+		<li>$Q \rightarrow P$</li>
 	</ul>
 </section>
 
@@ -499,7 +499,7 @@
 	<h3>Example</h3>
 	<pre class="C"><code data-trim data-noescape data-line-numbers="">
 		/** 
-		 * result > a /\ result > b /\ (result = a \/ result = b) 
+		 * result >= a /\ result >= b /\ (result = a \/ result = b) 
 		 */ 
 		int max(int a, int b)
 		{
@@ -528,8 +528,8 @@
 	<pre class="C"><code data-trim data-noescape data-line-numbers="">
 		/*@
 			ensures 
-				\result > a && 
-				\result > b && 
+				\result >= a && 
+				\result >= b && 
 				(\result == a || \result == b);  
 		*/ 
 		int max(int a, int b)
