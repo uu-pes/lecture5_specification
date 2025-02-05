@@ -28,7 +28,8 @@
 <!-- BEGIN SLIDES -->
 <section data-background-image="images/background.jpg" data-background-opacity="0.4">
 	<h1>Lecture 4</h1>
-	<p>Nikolaus Huber</p>
+	<br/>
+	<footer>Based on slides by Nikolaus Huber</footer>
 </section>
 
 <section data-background-image="images/specification.jpg" data-background-opacity="0.3">
@@ -133,17 +134,17 @@
 	<h3>Example - ATM</h3>
 	<ul>
 		<li>Functionality</li>
-		<ul>
+		<ul class="fragment fade-up">
 			<li>An ATM shall dispense money to people presenting a valid debit card and entering the correct PIN</li>
 		</ul>
 		<li>Usability</li>
-		<ul>
+		<ul class="fragment fade-up">
 			<li>ATM shall be usable for visually impaired people</li>
 			<li>ATM shall be usable for colour blind people</li>
 		</ul>
 		<li>Reliability</li>
-		<ul>
-			<li>There shall be at most one failure per calender year</li>
+		<ul class="fragment fade-up">
+			<li>There shall be at most one failure per calendar year</li>
 			<li>ATM shall be operational at least 99.99% of the time</li>
 			<li>After a restart, the ATM shall check the current balance against the main bank system</li>
 		</ul>
@@ -232,7 +233,8 @@
 
 		/** 
 		 * PRE: stack is not full 
-		 * POST: data is added as topmost element to the stack 
+		 * POST: data is added as topmost element to the stack
+		         and topPointer is incremented
 		 */ 
 		void push(int data) {
 			stackData[topPointer] = data; 
@@ -313,21 +315,71 @@
 </section>
 
 <section>
+	<h3>Example</h3>
+	<div><b style='color:red;'>If you are a bunny</b>, <b style='color:green;'>you eat carrots.</b></div>
+	<div><b style='color:red;'>$P$</b> $\rightarrow$ <b style='color:green;'>$Q$</b></div>
+	<table style="margin-top: 1rem" >
+		<tr>
+			<th>$P$</th>
+			<th>$Q$</th>
+			<th style="text-align: center;">$P \rightarrow Q$</th>
+		</tr>
+		<tr class="fragment fade-up">
+			<td>T</td>
+			<td>T</td>
+			<td style="text-align: center;">T</td>
+		</tr>
+		<tr class="fragment fade-up">
+			<td>F</td>
+			<td>T</td>
+			<td style="text-align: center;">T</td>
+		</tr>
+		<tr class="fragment fade-up">
+			<td>T</td>
+			<td>F</td>
+			<td style="text-align: center;"><emph>F</emph></td>
+		</tr>
+		<tr class="fragment fade-up">
+			<td>F</td>
+			<td>F</td>
+			<td style="text-align: center;">T</td>
+		</tr>
+	</table>
+</section>
+
+<section>
 	<h3>Properties of formulas</h3>
 	<div>A formula containing variables P, Q, ... can be</div>
 	<ul>
 		<li>Satisfiable</li>
-		<ul>
+		<ul class="fragment fade-up">
 			<li>holds for some assignment of values to P, Q, ...</li>
 		</ul>
 		<li>Valid (tautology)</li>
-		<ul>
-			<li>Always holds, independent of values of P, Q, ...</li>
+		<ul class="fragment fade-up">
+			<li>always holds, independent of values of P, Q, ...</li>
 		</ul>
 		<li>Unsatisfiable</li>
+		<ul class="fragment fade-up">
+			<li>does not hold, irrespective of values of P, Q, ...</li>
+		</ul>
 		<li>Invalid</li>
+		<ul class="fragment fade-up">
+			<li>does not hold from some assignment of values of P, Q, ...</li>
+		</ul>
 	</ul>
 </section>
+
+<section>
+	<h3>Examples</h3>
+	<ul>
+		<li>$P \rightarrow Q$</li>
+		<li>$(P \lor Q) \land \neg P \land \neg Q$</li>
+		<li>$(P \implies Q) \leftrightarrow (Q \implies P)$</li>
+		<li>$Q \implies P$</li>
+	</ul>
+</section>
+
 
 <section>
 	<h3>Useful valid formulas</h3>
@@ -406,7 +458,7 @@
 		<li>Formulas over pre-defined datatypes (e.g. int)</li>
 		<ul>
 			<li>$x \geq 0 \land y \geq 42 \rightarrow x + y \geq 10$</li>
-			<li>$\forall x: S.\, p(x) \rightarrow \exists y: S.\, p(y)$</li>
+			<li>$\forall x: R. \exists y: R. x = \sqrt{y}$</li>
 		</ul>
 		<li>Formulas over "uninterpreted" symbols</li>
 		<ul>
@@ -427,6 +479,9 @@
 			<li>Invalid</li>
 		</ul>
 		<li>Can be solved with SMT solver</li>
+		<ul>
+			<li>Example: <a href=https://philipp.ruemmer.org/princess.shtml>Princess (SMT solver developed at UU)</a></li>
+		</ul>
 	</ul>
 </section>
 
@@ -443,7 +498,7 @@
 	<h3>Example</h3>
 	<pre class="C"><code data-trim data-noescape data-line-numbers="">
 		/** 
-		 * result >= a /\ result >= b /\ (result = a \/ result = b) 
+		 * result > a /\ result > b /\ (result = a \/ result = b) 
 		 */ 
 		int max(int a, int b)
 		{
@@ -472,8 +527,8 @@
 	<pre class="C"><code data-trim data-noescape data-line-numbers="">
 		/*@
 			ensures 
-				\result >= a && 
-				\result >= b && 
+				\result > a && 
+				\result > b && 
 				(\result == a || \result == b);  
 		*/ 
 		int max(int a, int b)
@@ -540,7 +595,7 @@
 
 <section>
 	<h3>Example - Stack</h3>
-	<pre class="C"><code data-trim data-noescape data-line-numbers="|11|12|17|">
+	<pre class="C"><code data-trim data-noescape data-line-numbers="|11|12|17,18|">
 		#define STACK_SIZE 10 
 
 		int stackData[STACK_SIZE]; 
@@ -557,7 +612,8 @@
 			int res = stackData[topPointer]; 
 			topPointer--; 
 
-			assert(res == stackData[oldTopPointer]); 
+			assert(res == stackData[oldTopPointer] && 
+				   topPointer == oldTopPointer - 1); 
 			return res; 
 		}
 	</code></pre>
@@ -589,9 +645,38 @@
 	<ul>
 		<li class="fragment fade-up">If a formula P evaluates to true, then assume(P) has no effect</li>
 		<li class="fragment fade-up">If a formula P evalutes to false, then assume(P) suspends execution</li>
-		<li class="fragment fade-up">After assume(false), it's like the program was never started</li>
+		<ul class="fragment fade-up">
+			<li>After assume(false), it's like the program was never started</li>
+		</ul>
 		<li class="fragment fade-up">assume is not an executable statement</li>
 	</ul>
+</section>
+
+
+<section>
+	<h3>Translating pre/post conditions to assume/assert</h3>
+	<pre class="C"><code data-trim data-noescape data-line-numbers="|7,11|8,17,18|">
+		#define STACK_SIZE 10 
+
+		int stackData[STACK_SIZE]; 
+		int topPointer = 0; 
+
+		/** 
+		 * PRE: stack is not empty; 
+		 * POST: topmost element is removed and returned 
+		 */ 
+		int pop() {
+			assume(topPointer > 0); 
+			int oldTopPointer = topPointer; 
+
+			int res = stackData[topPointer]; 
+			topPointer--; 
+
+			assert(res == stackData[oldTopPointer] && 
+				   topPointer == oldTopPointer - 1); 
+			return res; 
+		}
+	</code></pre>
 </section>
 
 <section>
